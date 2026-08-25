@@ -8,7 +8,7 @@ export function LandingFooter() {
   return (
     <footer className="border-t border-border/65 bg-[rgba(255,251,245,0.92)]">
       <div className="container-shell py-12 lg:py-14">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)_minmax(0,0.7fr)_minmax(0,0.7fr)]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)_minmax(0,0.7fr)_minmax(0,0.7fr)]">
           <div className="space-y-5">
             <BrandLockup size="md" />
             <p className="max-w-xs text-sm leading-7 text-text-muted">
@@ -21,12 +21,12 @@ export function LandingFooter() {
               <h2 className="text-base font-semibold text-text-strong">
                 {group.title}
               </h2>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col">
                 {group.links.map((link) => (
                   <Link
                     key={`${group.title}-${link.label}`}
                     href={link.href}
-                    className="text-sm text-text-muted transition hover:text-accent"
+                    className="inline-flex min-h-10 items-center text-sm text-text-muted transition hover:text-accent"
                   >
                     {link.label}
                   </Link>
@@ -41,7 +41,7 @@ export function LandingFooter() {
             </h2>
             <a
               href={`mailto:${footer.email}`}
-              className="block text-sm text-text-muted transition hover:text-accent"
+              className="inline-flex min-h-10 items-center text-sm text-text-muted transition hover:text-accent"
             >
               {footer.email}
             </a>
@@ -55,7 +55,7 @@ export function LandingFooter() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="transition hover:text-accent"
+                className="inline-flex min-h-10 items-center transition hover:text-accent"
               >
                 {link.label}
               </Link>

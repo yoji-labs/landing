@@ -15,7 +15,7 @@ export function DemoTierBadge({ tier, label }: DemoTierBadgeProps) {
   return (
     <span
       data-tier={tier}
-      className={`rounded-full border px-3 py-1 text-xs font-medium ${tierClassName[tier]}`}
+      className={`max-w-full rounded-full border px-3 py-1 text-center text-xs font-medium leading-tight ${tierClassName[tier]}`}
     >
       {label}
     </span>

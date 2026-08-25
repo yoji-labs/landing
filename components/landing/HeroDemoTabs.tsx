@@ -15,9 +15,9 @@ export function HeroDemoTabs({ demos, defaultDemoId }: HeroDemoTabsProps) {
     demos.find((demo) => demo.id === activeDemoId) ?? demos[0];
 
   return (
-    <div className="space-y-3 lg:space-y-4">
-      <div className="rounded-[calc(var(--radius-panel)+0.15rem)] border border-border/70 bg-[rgba(252,247,238,0.78)] p-3 shadow-[0_30px_70px_rgba(60,35,12,0.1)] backdrop-blur-sm">
-        <div className="flex flex-wrap gap-2.5">
+    <div className="min-w-0 max-w-full space-y-3 lg:space-y-4">
+      <div className="min-w-0 max-w-full overflow-x-auto rounded-[calc(var(--radius-panel)+0.15rem)] border border-border/70 bg-[rgba(252,247,238,0.78)] p-3 shadow-[0_30px_70px_rgba(60,35,12,0.1)] backdrop-blur-sm">
+        <div className="flex w-max min-w-full flex-nowrap gap-2.5">
           {demos.map((demo) => {
             const isActive = demo.id === activeDemo.id;
 
@@ -25,7 +25,7 @@ export function HeroDemoTabs({ demos, defaultDemoId }: HeroDemoTabsProps) {
               <button
                 key={demo.id}
                 type="button"
-                className={`group relative overflow-hidden rounded-full border px-4 py-2.5 text-sm font-semibold transition ${
+                className={`group relative shrink-0 overflow-hidden whitespace-nowrap rounded-full border px-4 py-2.5 text-sm font-semibold transition ${
                   isActive
                     ? "border-accent bg-accent text-white shadow-[0_12px_28px_rgba(211,95,57,0.22)]"
                     : "border-border/80 bg-surface/95 text-text-muted hover:border-accent/35 hover:text-accent"

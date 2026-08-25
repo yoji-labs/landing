@@ -37,12 +37,20 @@ export function CalEmbed({ calLink }: CalEmbedProps) {
   return (
     <div
       data-testid="cal-embed"
-      className="overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface"
+      className="w-full min-w-0 max-w-full overflow-x-auto overflow-y-hidden rounded-[var(--radius-panel)] border border-border bg-surface"
     >
       <Cal
         namespace={NAMESPACE}
         calLink={calLink}
-        style={{ width: "100%", height: "100%", minHeight: "640px", overflow: "auto" }}
+        style={{
+          boxSizing: "border-box",
+          width: "100%",
+          minWidth: 0,
+          maxWidth: "100%",
+          height: "100%",
+          minHeight: "640px",
+          overflow: "auto",
+        }}
         config={{ layout: "month_view", theme: "light" }}
       />
     </div>

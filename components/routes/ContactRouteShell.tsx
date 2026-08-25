@@ -19,12 +19,12 @@ export function ContactRouteShell() {
         <ViewportReveal variant="rise">
           <div
             data-testid="contact-section"
-            className="card-surface grid gap-8 px-6 py-7 sm:px-7 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]"
+            className="card-surface grid min-w-0 gap-8 px-6 py-7 sm:px-7 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]"
           >
-            <div aria-label="Contact summary" className="space-y-5 lg:border-r lg:border-border/65 lg:pr-8">
+            <div aria-label="Contact summary" className="min-w-0 space-y-5 lg:border-r lg:border-border/65 lg:pr-8">
               <div className="space-y-4">
                 <SectionEyebrow>Contact</SectionEyebrow>
-                <h1 className="editorial-headline max-w-[11ch] text-[3rem] sm:text-[3.45rem]">
+                <h1 className="editorial-headline max-w-full text-[2.25rem] min-[380px]:text-[3rem] sm:max-w-[13ch] sm:text-[3.45rem]">
                   Start the conversation.
                 </h1>
                 <p className="prose-measure text-base leading-7 text-text-muted sm:text-[1.05rem]">
@@ -38,7 +38,7 @@ export function ContactRouteShell() {
                 </p>
                 <a
                   href={`mailto:${aboutContact.contact.email}`}
-                  className="mt-4 block text-xl font-semibold text-text-strong transition hover:text-accent"
+                  className="mt-2 inline-flex min-h-10 max-w-full items-center whitespace-nowrap text-xl font-semibold text-text-strong transition hover:text-accent"
                 >
                   {aboutContact.contact.email}
                 </a>

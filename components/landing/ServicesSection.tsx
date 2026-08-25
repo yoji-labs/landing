@@ -32,7 +32,7 @@ export function ServicesSection() {
 
           <div className="relative">
             <div className="motif-field motif-field--warm motif-field--blur-lg absolute inset-x-[6%] top-[12%] hidden h-[72%] opacity-[0.3] lg:block" />
-            <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {services.cards.map((service, index) => (
                 <ServiceCard key={service.id} service={service} index={index} />
               ))}

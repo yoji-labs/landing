@@ -26,7 +26,7 @@ export function DemoTourRoute({ demo, tourUrl }: DemoTourRouteProps) {
               label={`${demo.destination.availabilityLabel} · sample data`}
             />
           </div>
-          <h1 className="max-w-[14ch] text-5xl sm:text-6xl">
+          <h1 className="max-w-full text-[2.5rem] sm:max-w-[14ch] sm:text-6xl">
             {demo.title}, as the kitchen sees it.
           </h1>
           <p className="prose-measure text-lg leading-8 text-text-muted">
@@ -37,7 +37,7 @@ export function DemoTourRoute({ demo, tourUrl }: DemoTourRouteProps) {
         {tourUrl ? (
           <div
             data-testid="demo-tour-embed"
-            className="overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface shadow-[0_18px_48px_rgba(43,37,32,0.08)]"
+            className="min-w-0 max-w-full overflow-hidden rounded-[var(--radius-panel)] border border-border bg-surface shadow-[0_18px_48px_rgba(43,37,32,0.08)]"
           >
             <iframe
               src={tourUrl}
@@ -45,7 +45,7 @@ export function DemoTourRoute({ demo, tourUrl }: DemoTourRouteProps) {
               loading="lazy"
               allowFullScreen
               allow="clipboard-write; fullscreen"
-              className="aspect-[16/10] w-full border-0"
+              className="block aspect-[16/10] w-full max-w-full border-0"
             />
           </div>
         ) : (
@@ -61,14 +61,14 @@ export function DemoTourRoute({ demo, tourUrl }: DemoTourRouteProps) {
           </div>
         )}
 
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-          <div className="card-surface px-6 py-7 sm:px-7">
+        <div className="grid min-w-0 gap-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+          <div className="card-surface min-w-0 px-6 py-7 sm:px-7">
             <p className="text-sm font-semibold text-text-strong">What you&apos;ll see</p>
             <div className="mt-4 space-y-3">
               {demo.routeCard.highlights.map((highlight) => (
                 <p
                   key={highlight}
-                  className="rounded-[var(--radius-control)] border border-border/70 bg-surface-soft px-4 py-3 text-sm leading-7 text-text-muted"
+                  className="break-words rounded-[var(--radius-control)] border border-border/70 bg-surface-soft px-4 py-3 text-sm leading-7 text-text-muted"
                 >
                   {highlight}
                 </p>
@@ -76,7 +76,7 @@ export function DemoTourRoute({ demo, tourUrl }: DemoTourRouteProps) {
             </div>
           </div>
 
-          <div className="card-surface flex flex-col justify-between gap-6 px-6 py-7 sm:px-7">
+          <div className="card-surface flex min-w-0 flex-col justify-between gap-6 px-6 py-7 sm:px-7">
             <div>
               <p className="text-sm font-semibold text-text-strong">See it on your numbers</p>
               <p className="mt-2 text-sm leading-7 text-text-muted">
@@ -89,7 +89,7 @@ export function DemoTourRoute({ demo, tourUrl }: DemoTourRouteProps) {
               </Link>
               <a
                 href={`mailto:${siteConfig.contactEmail}`}
-                className="text-sm font-semibold text-text-muted transition hover:text-accent"
+                className="inline-flex min-h-10 max-w-full items-center break-words text-sm font-semibold text-text-muted transition hover:text-accent"
               >
                 or {siteConfig.contactEmail}
               </a>

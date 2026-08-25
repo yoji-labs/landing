@@ -90,8 +90,8 @@ export function GeneralContactForm({
   }
 
   return (
-    <div className={embedded ? "px-0 py-0 sm:px-0" : "card-surface px-6 py-7 sm:px-7"}>
-      <p className="text-sm font-semibold text-text-strong">{title}</p>
+    <div className={embedded ? "min-w-0 px-0 py-0 sm:px-0" : "card-surface min-w-0 px-6 py-7 sm:px-7"}>
+      <p className="break-words text-sm font-semibold text-text-strong">{title}</p>
 
       {submitState === "success" ? (
         <div className="mt-5 space-y-4 rounded-[var(--radius-card)] border border-[#D8C08F] bg-surface-soft px-5 py-5">
@@ -102,7 +102,7 @@ export function GeneralContactForm({
           <p className="text-sm leading-7 text-text-muted">{responseNote}</p>
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-[var(--radius-card)] border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-foreground transition hover:border-accent/35 hover:text-accent"
+            className="inline-flex min-h-10 w-full items-center justify-center rounded-[var(--radius-card)] border border-border bg-surface px-4 py-2.5 text-sm font-semibold text-foreground transition hover:border-accent/35 hover:text-accent sm:w-auto"
             onClick={() => {
               setSubmitState("idle");
               setFeedback("");
@@ -112,15 +112,15 @@ export function GeneralContactForm({
           </button>
         </div>
       ) : (
-        <form className="relative mt-5 space-y-4" onSubmit={handleSubmit} noValidate>
+        <form className="relative mt-5 min-w-0 space-y-4" onSubmit={handleSubmit} noValidate>
           <HoneypotField value={honeypot} onChange={setHoneypot} />
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="space-y-2 text-sm font-medium text-text-strong">
+          <div className="grid min-w-0 gap-4 sm:grid-cols-2">
+            <label className="block min-w-0 space-y-2 text-sm font-medium text-text-strong">
               <span>Name</span>
               <input
                 value={values.name}
                 onChange={(event) => updateField("name", event.target.value)}
-                className="w-full rounded-[var(--radius-control)] border border-border bg-surface-soft px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent"
+                className="min-h-10 w-full rounded-[var(--radius-control)] border border-border bg-surface-soft px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent"
               />
               {errors.name ? (
                 <span className="block text-xs font-medium text-accent">
@@ -129,13 +129,13 @@ export function GeneralContactForm({
               ) : null}
             </label>
 
-            <label className="space-y-2 text-sm font-medium text-text-strong">
+            <label className="block min-w-0 space-y-2 text-sm font-medium text-text-strong">
               <span>Email</span>
               <input
                 type="email"
                 value={values.email}
                 onChange={(event) => updateField("email", event.target.value)}
-                className="w-full rounded-[var(--radius-control)] border border-border bg-surface-soft px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent"
+                className="min-h-10 w-full rounded-[var(--radius-control)] border border-border bg-surface-soft px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent"
               />
               {errors.email ? (
                 <span className="block text-xs font-medium text-accent">
@@ -145,12 +145,12 @@ export function GeneralContactForm({
             </label>
           </div>
 
-          <label className="space-y-2 text-sm font-medium text-text-strong">
+          <label className="block min-w-0 space-y-2 text-sm font-medium text-text-strong">
             <span>Subject</span>
             <input
               value={values.subject}
               onChange={(event) => updateField("subject", event.target.value)}
-              className="w-full rounded-[var(--radius-control)] border border-border bg-surface-soft px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent"
+              className="min-h-10 w-full rounded-[var(--radius-control)] border border-border bg-surface-soft px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent"
             />
             {errors.subject ? (
               <span className="block text-xs font-medium text-accent">
@@ -159,13 +159,13 @@ export function GeneralContactForm({
             ) : null}
           </label>
 
-          <label className="space-y-2 text-sm font-medium text-text-strong">
+          <label className="block min-w-0 space-y-2 text-sm font-medium text-text-strong">
             <span>Message</span>
             <textarea
               value={values.message}
               onChange={(event) => updateField("message", event.target.value)}
               rows={5}
-              className="w-full rounded-[var(--radius-control)] border border-border bg-surface-soft px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent"
+              className="min-h-10 w-full rounded-[var(--radius-control)] border border-border bg-surface-soft px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent"
             />
             {errors.message ? (
               <span className="block text-xs font-medium text-accent">
@@ -182,8 +182,8 @@ export function GeneralContactForm({
 
           <TurnstileWidget onToken={handleToken} />
 
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <p className="text-xs leading-6 text-text-muted">
+          <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+            <p className="min-w-0 break-words text-xs leading-6 text-text-muted sm:flex-1">
               {formsUseMocks
                 ? "Local preview: type “error” in the subject to see the failure state."
                 : "We reply from hello@yojilabs.com within two business days."}
@@ -191,7 +191,7 @@ export function GeneralContactForm({
             <button
               type="submit"
               disabled={submitState === "submitting"}
-              className="inline-flex items-center justify-center rounded-[var(--radius-card)] bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-70"
+              className="inline-flex min-h-10 w-full items-center justify-center rounded-[var(--radius-card)] bg-accent px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
             >
               {submitState === "submitting" ? "Sending..." : "Send Message"}
             </button>

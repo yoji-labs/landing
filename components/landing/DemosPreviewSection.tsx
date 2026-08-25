@@ -12,10 +12,10 @@ function resolveDemoLink(demo: DemoExperience) {
 }
 
 const previewFrameClassName =
-  "h-44 overflow-hidden rounded-[var(--radius-card)] border border-border/75 bg-[#FFF8EE] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]";
+  "mx-auto min-h-44 w-full max-w-[22rem] overflow-hidden rounded-[var(--radius-card)] border border-border/75 bg-[#FFF8EE] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] lg:p-3 xl:p-4";
 
 const previewHeaderClassName =
-  "flex items-center justify-between gap-3 border-b border-border/60 pb-3";
+  "flex flex-wrap items-center justify-between gap-2 border-b border-border/60 pb-3";
 
 const previewEyebrowClassName =
   "text-[10px] font-semibold uppercase tracking-[0.2em] text-text-muted";
@@ -95,7 +95,7 @@ function WorkPreviewGraphic({ demo }: { demo: DemoExperience }) {
                   return (
                     <span
                       key={`${day}-${slot}`}
-                      className={`block rounded-full ${
+                      className={`mx-auto block w-full max-w-12 rounded-full ${
                         active
                           ? "bg-[linear-gradient(135deg,#FCE3B0_0%,#F5B17D_100%)]"
                           : hold
@@ -123,13 +123,13 @@ function WorkPreviewGraphic({ demo }: { demo: DemoExperience }) {
         <span className={previewValueClassName}>Live</span>
       </div>
 
-      <div className="mt-3 grid gap-3 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+      <div className="mt-3 grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-2">
         <div className="rounded-[0.95rem] border border-border/55 bg-[rgba(255,252,246,0.94)] px-3 py-3">
-          <div className="flex h-14 items-end gap-2">
+          <div className="flex h-14 items-end justify-center gap-2">
             {[32, 50, 42, 64, 58].map((height, index) => (
               <span
                 key={height}
-                className={`block flex-1 rounded-full ${
+                className={`block min-w-0 max-w-3 flex-1 rounded-full ${
                   index >= 3 ? "bg-accent" : "bg-surface-soft"
                 }`}
                 style={{ height: `${Math.max(18, Math.round(height * 0.72))}px` }}
@@ -197,14 +197,17 @@ export function DemosPreviewSection() {
             </div>
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {demos.map((demo) => {
               const demoLink = resolveDemoLink(demo);
 
               return (
-                <article key={demo.id} className="card-surface flex h-full flex-col px-5 py-6 sm:px-6">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-text-muted">
+                <article
+                  key={demo.id}
+                  className="card-surface flex h-full min-w-0 flex-col px-5 py-6 sm:px-6 lg:px-4 xl:px-5 2xl:px-6"
+                >
+                  <div className="flex items-center justify-between gap-3 lg:flex-col lg:items-start lg:gap-2 xl:flex-row xl:items-center xl:gap-3">
+                    <p className="max-w-full text-[11px] font-semibold uppercase tracking-[0.18em] text-text-muted">
                       {demo.category}
                     </p>
                     <DemoTierBadge
@@ -237,7 +240,7 @@ export function DemosPreviewSection() {
                     {demoLink ? (
                       <Link
                         href={demoLink}
-                        className="inline-flex items-center text-sm font-semibold text-accent transition hover:text-accent/80"
+                        className="inline-flex min-h-10 items-center text-sm font-semibold text-accent transition hover:text-accent/80"
                       >
                         {demo.destination.linkLabel} →
                       </Link>

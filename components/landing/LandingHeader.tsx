@@ -35,7 +35,7 @@ export function LandingHeader() {
       <div className="hero-shell flex items-center justify-between py-4 lg:py-5">
         <Link
           href="/"
-          className="inline-flex items-center rounded-[var(--radius-control)] px-1.5 py-1 transition hover:opacity-90 focus-visible:outline-offset-4"
+          className="inline-flex min-h-10 items-center rounded-[var(--radius-control)] px-1.5 py-1 transition hover:opacity-90 focus-visible:outline-offset-4"
         >
           <BrandLockup size="lg" priority />
         </Link>
@@ -45,7 +45,7 @@ export function LandingHeader() {
             <Link
               key={item.id}
               href={item.href}
-              className="text-[0.96rem] font-medium text-foreground transition hover:text-accent"
+              className="inline-flex min-h-10 items-center text-[0.96rem] font-medium text-foreground transition hover:text-accent"
             >
               {item.label}
             </Link>
