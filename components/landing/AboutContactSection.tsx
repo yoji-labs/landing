@@ -25,9 +25,11 @@ export function AboutContactSection() {
           className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-start"
           variant="rise"
         >
-          <div className="space-y-5 lg:pl-20">
+          <div className="min-w-0 space-y-5 lg:pl-10">
             <SectionEyebrow>{aboutContact.eyebrow}</SectionEyebrow>
-            <h2 className="editorial-headline max-w-[13ch] text-[3rem] sm:text-[3.65rem]">{aboutContact.title}</h2>
+            <h2 className="editorial-headline max-w-[13ch] text-[2.9rem] sm:text-[3.65rem] lg:text-[3rem] xl:text-[3.35rem] 2xl:text-[3.65rem]">
+              {aboutContact.title}
+            </h2>
             <p className="prose-measure text-base leading-7 text-text-muted sm:text-[1.05rem]">
               {aboutContact.description}
             </p>

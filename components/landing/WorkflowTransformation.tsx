@@ -87,7 +87,7 @@ export function WorkflowTransformation() {
         </p>
       </div>
 
-      <div className="mt-6 grid gap-4 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,0.98fr)_minmax(0,0.92fr)] xl:items-start">
+      <div className="mt-6 grid gap-4 md:grid-cols-[minmax(0,0.92fr)_minmax(0,0.98fr)_minmax(0,0.92fr)] md:items-start">
         <div
           className={`transition-all duration-[var(--motion-slow)] ease-[var(--ease-enter)] ${
             isActive ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"

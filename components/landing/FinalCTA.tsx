@@ -19,7 +19,7 @@ export function FinalCTA() {
             <div className="soft-dot-grid absolute left-[10rem] top-7 hidden h-10 w-10 opacity-[0.14] lg:block" />
 
             <div className="relative z-10 flex flex-col gap-8 lg:grid lg:grid-cols-[11rem_minmax(0,1fr)_auto] lg:items-center">
-              <div className="relative flex min-h-[8.5rem] items-center overflow-hidden rounded-[1.75rem] border border-border/50 bg-[linear-gradient(180deg,rgba(255,250,242,0.72),rgba(252,244,232,0.48))] px-5 py-4 shadow-[0_14px_30px_rgba(39,29,22,0.04)]">
+              <div className="relative flex min-h-[8.5rem] w-full max-w-[11rem] items-center overflow-hidden rounded-[1.75rem] border border-border/50 bg-[linear-gradient(180deg,rgba(255,250,242,0.72),rgba(252,244,232,0.48))] px-5 py-4 shadow-[0_14px_30px_rgba(39,29,22,0.04)]">
                 <div className="motif-field motif-field--cta absolute -left-8 bottom-[-2rem] h-34 w-24 opacity-[0.92]" />
                 <div className="motif-field motif-field--soft absolute left-12 top-[-0.5rem] h-24 w-16 opacity-[0.86]" />
                 <div className="motif-field motif-field--soft motif-field--blur-sm absolute right-2 top-6 h-14 w-14 opacity-[0.45]" />

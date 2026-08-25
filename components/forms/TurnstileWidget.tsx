@@ -88,5 +88,12 @@ export function TurnstileWidget({ onToken }: TurnstileWidgetProps) {
     return null;
   }
 
-  return <div id={id} ref={containerRef} className="min-h-[65px]" data-testid="turnstile" />;
+  return (
+    <div
+      id={id}
+      ref={containerRef}
+      className="min-h-[65px] w-full max-w-full overflow-hidden"
+      data-testid="turnstile"
+    />
+  );
 }

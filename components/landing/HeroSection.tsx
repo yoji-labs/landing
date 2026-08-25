@@ -19,7 +19,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="page-section hero-shell relative grid scroll-mt-28 gap-12 pb-[4.5rem] pt-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(640px,1.3fr)] lg:items-start lg:gap-14 lg:pb-24 lg:pt-10 xl:gap-16"
+      className="page-section hero-shell relative grid scroll-mt-28 gap-12 pb-[4.5rem] pt-8 lg:gap-14 lg:pb-24 lg:pt-10 xl:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] xl:items-start xl:gap-16"
     >
       <div
         data-testid="hero-background-composition"
@@ -57,7 +57,7 @@ export function HeroSection() {
         <div className="soft-dot-grid absolute right-[34%] top-[13.5rem] hidden h-16 w-14 opacity-[0.07] xl:block" />
       </div>
 
-      <div className="relative z-10 space-y-8 pt-4 lg:sticky lg:top-24 lg:max-w-[35rem] lg:pt-12">
+      <div className="relative z-10 space-y-8 pt-4 lg:max-w-[35rem] lg:pt-12 xl:sticky xl:top-24">
         <div className="hero-reveal [--hero-delay:40ms] space-y-4">
           <SectionEyebrow>{hero.eyebrow}</SectionEyebrow>
           <h1 className="editorial-headline max-w-[8.9ch] text-[3.75rem] sm:text-[4.6rem] lg:text-[5.55rem]">
@@ -84,7 +84,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="hero-reveal relative z-10 [--hero-delay:240ms]">
+      <div className="hero-reveal relative z-10 min-w-0 [--hero-delay:240ms]">
         <HeroDemoTabs demos={demos} defaultDemoId={hero.demoOrder[0]} />
       </div>
 

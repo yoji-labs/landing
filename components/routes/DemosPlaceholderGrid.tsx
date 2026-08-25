@@ -20,7 +20,7 @@ export function DemosPlaceholderGrid() {
       <div className="space-y-10">
         <div className="space-y-5">
           <SectionEyebrow>Demos</SectionEyebrow>
-          <h1 className="max-w-[12ch] text-5xl sm:text-6xl">
+          <h1 className="max-w-full text-[2.5rem] sm:max-w-[12ch] sm:text-6xl">
             {demosRoute.title}
           </h1>
           <p className="prose-measure text-lg leading-8 text-text-muted">
@@ -28,13 +28,13 @@ export function DemosPlaceholderGrid() {
           </p>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {demos.map((demo) => {
             const link = resolveDemoLink(demo);
 
             return (
-              <article key={demo.id} className="card-surface h-full px-6 py-7 sm:px-7">
-                <div className="flex items-center justify-between gap-3">
+              <article key={demo.id} className="card-surface min-w-0 h-full px-6 py-7 sm:px-7">
+                <div className="flex flex-wrap items-center justify-between gap-3">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">
                     {demo.category}
                   </p>
@@ -53,7 +53,7 @@ export function DemosPlaceholderGrid() {
                   {demo.routeCard.highlights.map((highlight) => (
                     <div
                       key={highlight}
-                      className="rounded-[var(--radius-control)] border border-border/70 bg-surface-soft px-4 py-3 text-sm leading-7 text-text-muted"
+                      className="break-words rounded-[var(--radius-control)] border border-border/70 bg-surface-soft px-4 py-3 text-sm leading-7 text-text-muted"
                     >
                       {highlight}
                     </div>
@@ -68,7 +68,7 @@ export function DemosPlaceholderGrid() {
                   {link ? (
                     <Link
                       href={link}
-                      className="inline-flex items-center text-sm font-semibold text-accent transition hover:text-accent/80"
+                      className="inline-flex min-h-10 items-center text-sm font-semibold text-accent transition hover:text-accent/80"
                     >
                       {demo.destination.linkLabel} →
                     </Link>

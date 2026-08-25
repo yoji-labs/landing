@@ -141,7 +141,7 @@ function DemoFrameShell({
   children: ReactNode;
 }) {
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border/80 bg-[linear-gradient(180deg,rgba(255,252,246,0.98),rgba(250,242,230,0.96))] shadow-[0_30px_70px_rgba(48,24,10,0.12)]">
+    <div className="flex h-full min-w-0 flex-col overflow-hidden rounded-[1.75rem] border border-border/80 bg-[linear-gradient(180deg,rgba(255,252,246,0.98),rgba(250,242,230,0.96))] shadow-[0_30px_70px_rgba(48,24,10,0.12)]">
       <div className="flex items-center justify-between gap-4 border-b border-border/65 bg-[rgba(255,252,246,0.92)] px-4 py-3 sm:px-5">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
@@ -159,21 +159,21 @@ function DemoFrameShell({
         <div className="hidden h-8 w-28 rounded-full border border-border/65 bg-surface-soft/80 md:block" />
       </div>
 
-      <div className="grid min-h-0 flex-1 md:grid-cols-[10.5rem_minmax(0,1fr)]">
+      <div className="grid min-h-0 min-w-0 flex-1 md:grid-cols-[10.5rem_minmax(0,1fr)]">
         <aside
           role="navigation"
           aria-label={navAriaLabel}
-          className="border-b border-border/65 bg-[linear-gradient(180deg,rgba(255,248,239,0.92),rgba(247,239,226,0.95))] p-4 md:border-b-0 md:border-r"
+          className="min-w-0 border-b border-border/65 bg-[linear-gradient(180deg,rgba(255,248,239,0.92),rgba(247,239,226,0.95))] p-3 sm:p-4 md:border-b-0 md:border-r"
         >
           <p className="text-lg font-semibold tracking-[-0.03em] text-text-strong">{appName}</p>
-          <div className="mt-4 space-y-1.5">
+          <div className="mt-3 flex min-w-0 gap-1.5 overflow-x-auto pb-1 md:mt-4 md:block md:space-y-1.5 md:overflow-visible md:pb-0">
             {productSidebarItems.map((item) => {
               const isActive = item === activeNavItem;
 
               return (
                 <div
                   key={item}
-                  className={`flex items-center gap-2.5 rounded-[0.95rem] px-3 py-2.5 text-sm ${
+                  className={`flex shrink-0 items-center gap-2.5 whitespace-nowrap rounded-[0.95rem] px-3 py-2.5 text-sm ${
                     isActive
                       ? "bg-[#FFF0E4] text-accent shadow-[inset_0_0_0_1px_rgba(211,95,57,0.08)]"
                       : "text-text-muted"
@@ -187,8 +187,8 @@ function DemoFrameShell({
           </div>
         </aside>
 
-        <div className="min-h-0 bg-[linear-gradient(180deg,rgba(255,252,247,0.96),rgba(252,247,238,0.94))]">
-          <div className="flex flex-wrap items-start justify-between gap-4 border-b border-border/60 px-4 py-4 sm:px-5">
+        <div className="flex min-h-0 min-w-0 flex-col bg-[linear-gradient(180deg,rgba(255,252,247,0.96),rgba(252,247,238,0.94))]">
+          <div className="flex shrink-0 flex-wrap items-start justify-between gap-4 border-b border-border/60 px-4 py-4 sm:px-5">
             <div>
               <p className="text-[1.05rem] font-semibold tracking-[-0.03em] text-text-strong">{title}</p>
               <p className="mt-1 text-xs text-text-muted">{subtitle}</p>
@@ -202,7 +202,7 @@ function DemoFrameShell({
             </div>
           </div>
 
-          <div className="flex h-full flex-col p-3.5 sm:p-4">{children}</div>
+          <div className="flex min-h-0 flex-1 flex-col p-3.5 sm:p-4 lg:overflow-y-auto">{children}</div>
         </div>
       </div>
     </div>
@@ -267,63 +267,72 @@ function CompactTrendChart({
 
   return (
     <div className="rounded-[var(--radius-card)] border border-border/70 bg-[rgba(255,252,246,0.9)] px-4 py-4 shadow-[0_10px_22px_rgba(39,29,22,0.035)]">
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-2.5">
         <div>
           <p className="text-sm font-semibold text-text-strong">{title}</p>
           <p className="mt-1 text-xs text-text-muted">{subtitle}</p>
         </div>
-        <span className="rounded-full bg-surface-soft px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">
+        <span className="shrink-0 whitespace-nowrap rounded-full bg-surface-soft px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.16em] text-text-muted">
           Last 7 Days
         </span>
       </div>
 
-      <svg
-        role="img"
-        aria-label={title}
-        viewBox={`0 0 ${width} ${height}`}
-        className="mt-3 h-[7.25rem] w-full"
-      >
-        {[0, 1, 2].map((row) => {
-          const y = padding.top + (usableHeight / 2) * row;
+      <div className="mt-3 max-w-full overflow-x-auto">
+        <svg
+          role="img"
+          aria-label={title}
+          viewBox={`0 0 ${width} ${height}`}
+          className="h-[7.25rem] min-w-[22rem] w-full"
+        >
+          {[0, 1, 2].map((row) => {
+            const y = padding.top + (usableHeight / 2) * row;
 
-          return (
-            <line
-              key={row}
-              x1={padding.left}
-              y1={y}
-              x2={width - padding.right}
-              y2={y}
-              stroke="rgba(108,92,77,0.12)"
-              strokeWidth="1"
-            />
-          );
-        })}
+            return (
+              <line
+                key={row}
+                x1={padding.left}
+                y1={y}
+                x2={width - padding.right}
+                y2={y}
+                stroke="rgba(108,92,77,0.12)"
+                strokeWidth="1"
+              />
+            );
+          })}
 
-        <path
-          d={linePath}
-          fill="none"
-          stroke="#D35F39"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+          <path
+            d={linePath}
+            fill="none"
+            stroke="#D35F39"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
 
-        {coordinates.map((point) => (
-          <g key={point.label}>
-            <circle cx={point.x} cy={point.y} r="4" fill="#FCF7EE" stroke="#D35F39" strokeWidth="2" />
-            <text
-              x={point.x}
-              y={height - 4}
-              textAnchor="middle"
-              fontSize="10.5"
-              fill="#6C5C4D"
-              fontFamily="var(--font-body-family)"
-            >
-              {point.label}
-            </text>
-          </g>
-        ))}
-      </svg>
+          {coordinates.map((point) => (
+            <g key={point.label}>
+              <circle
+                cx={point.x}
+                cy={point.y}
+                r="4"
+                fill="#FCF7EE"
+                stroke="#D35F39"
+                strokeWidth="2"
+              />
+              <text
+                x={point.x}
+                y={height - 4}
+                textAnchor="middle"
+                fontSize="10.5"
+                fill="#6C5C4D"
+                fontFamily="var(--font-body-family)"
+              >
+                {point.label}
+              </text>
+            </g>
+          ))}
+        </svg>
+      </div>
 
       <div className="mt-2 flex flex-wrap gap-2 text-[11px] text-text-muted">
         {points.slice(0, 4).map((point) => (
@@ -357,7 +366,7 @@ function KitchenInventoryPreview({ demo }: ProductPreviewProps) {
       actions={
         <button
           type="button"
-          className="rounded-full bg-accent px-3.5 py-1.5 text-xs font-semibold text-white"
+          className="min-h-10 rounded-full bg-accent px-3.5 py-1.5 text-xs font-semibold text-white"
         >
           + Create Order
         </button>
@@ -375,7 +384,7 @@ function KitchenInventoryPreview({ demo }: ProductPreviewProps) {
           ))}
         </div>
 
-        <div className="preview-region [--preview-delay:70ms] grid flex-1 gap-3 xl:grid-cols-[minmax(0,1.32fr)_minmax(13.75rem,0.68fr)]">
+        <div className="preview-region [--preview-delay:70ms] grid flex-1 gap-3 lg:grid-cols-[minmax(0,1.32fr)_minmax(13.75rem,0.68fr)]">
           <div className="rounded-[var(--radius-card)] border border-border/70 bg-[rgba(255,252,246,0.9)] px-4 py-4 shadow-[0_10px_22px_rgba(39,29,22,0.035)]">
             <div className="flex items-center justify-between gap-3 border-b border-border/65 pb-3">
               <p className="text-sm font-semibold text-text-strong">Inventory</p>
@@ -388,9 +397,9 @@ function KitchenInventoryPreview({ demo }: ProductPreviewProps) {
               {primaryItems.map((item, index) => (
                 <div
                   key={item.label}
-                  className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-3 rounded-[var(--radius-control)] bg-surface-soft/75 px-3 py-2.5 text-sm"
+                  className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 rounded-[var(--radius-control)] bg-surface-soft/75 px-3 py-2.5 text-sm sm:grid-cols-[minmax(0,1fr)_auto_auto]"
                 >
-                  <div className="min-w-0">
+                  <div className="col-span-2 min-w-0 sm:col-span-1">
                     <p className="truncate font-medium text-text-strong">{item.label}</p>
                     {item.detail ? (
                       <p className="mt-0.5 truncate text-xs text-text-muted">{item.detail}</p>
@@ -461,21 +470,21 @@ function ClientSchedulingPreview({ demo }: ProductPreviewProps) {
       actions={
         <button
           type="button"
-          className="rounded-full bg-accent px-3.5 py-1.5 text-xs font-semibold text-white"
+          className="min-h-10 rounded-full bg-accent px-3.5 py-1.5 text-xs font-semibold text-white"
         >
           + New Booking
         </button>
       }
     >
       <div className="flex h-full flex-col gap-3">
-        <div className="preview-region [--preview-delay:20ms] grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="preview-region [--preview-delay:20ms] grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <CompactMetric label="Today" value={heroPreview.metrics[0]?.value ?? "5"} helper="Bookings" />
           <CompactMetric label="Confirmed" value={heroPreview.metrics[1]?.value ?? "3"} helper="Booked" />
           <CompactMetric label="Open Slots" value={heroPreview.metrics[2]?.value ?? "1"} helper="Available" />
           <CompactMetric label="This Week" value={heroPreview.metrics[3]?.value ?? "12"} helper="Bookings" />
         </div>
 
-        <div className="grid flex-1 gap-3 xl:grid-cols-[minmax(0,1.28fr)_minmax(13.75rem,0.72fr)]">
+        <div className="grid flex-1 gap-3 lg:grid-cols-[minmax(0,1.28fr)_minmax(13.75rem,0.72fr)]">
           <div className="preview-region [--preview-delay:70ms] rounded-[var(--radius-card)] border border-border/70 bg-[rgba(255,252,246,0.9)] px-4 py-4 shadow-[0_10px_22px_rgba(39,29,22,0.035)]">
             <div className="flex items-center justify-between gap-3 pb-3">
               <div>
@@ -487,34 +496,36 @@ function ClientSchedulingPreview({ demo }: ProductPreviewProps) {
               </span>
             </div>
 
-            <div className="grid grid-cols-5 gap-2 rounded-[var(--radius-card)] border border-border/65 bg-[#FFF9EF] p-3">
-              {schedulingPlannerColumns.map((column) => (
-                <div
-                  key={column.day}
-                  className="min-w-0 rounded-[var(--radius-card)] border border-border/60 bg-[rgba(255,252,246,0.96)] px-1.5 py-3"
-                >
-                  <p className="text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-text-muted">
-                    {column.day}
-                  </p>
-                  <div className="mt-3 space-y-2">
-                    {column.items.map((item) => (
-                      <div
-                        key={`${column.day}-${item.title}`}
-                        className={`min-w-0 overflow-hidden rounded-[0.95rem] px-1.5 py-2.5 ${
-                          item.accent
-                            ? "bg-[linear-gradient(135deg,#FCE3B0_0%,#F5B17D_100%)] text-[#6A2A12]"
-                            : "bg-surface-soft text-text-muted"
-                        }`}
-                      >
-                        <p className="whitespace-nowrap text-[10px] font-semibold leading-tight tracking-[-0.01em]">
-                          {item.title}
-                        </p>
-                        <p className="mt-1 text-[9px] leading-tight">{item.detail}</p>
-                      </div>
-                    ))}
+            <div className="max-w-full overflow-x-auto rounded-[var(--radius-card)] border border-border/65 bg-[#FFF9EF]">
+              <div className="grid min-w-[30rem] grid-cols-5 gap-2 p-3 sm:min-w-0">
+                {schedulingPlannerColumns.map((column) => (
+                  <div
+                    key={column.day}
+                    className="min-w-0 rounded-[var(--radius-card)] border border-border/60 bg-[rgba(255,252,246,0.96)] px-1.5 py-3"
+                  >
+                    <p className="text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-text-muted">
+                      {column.day}
+                    </p>
+                    <div className="mt-3 space-y-2">
+                      {column.items.map((item) => (
+                        <div
+                          key={`${column.day}-${item.title}`}
+                          className={`min-w-0 overflow-hidden rounded-[0.95rem] px-1.5 py-2.5 ${
+                            item.accent
+                              ? "bg-[linear-gradient(135deg,#FCE3B0_0%,#F5B17D_100%)] text-[#6A2A12]"
+                              : "bg-surface-soft text-text-muted"
+                          }`}
+                        >
+                          <p className="whitespace-nowrap text-[10px] font-semibold leading-tight tracking-[-0.01em]">
+                            {item.title}
+                          </p>
+                          <p className="mt-1 text-[9px] leading-tight">{item.detail}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
@@ -572,7 +583,7 @@ function OperationsDashboardPreview({ demo }: ProductPreviewProps) {
       }
     >
       <div className="flex h-full flex-col gap-3">
-        <div className="preview-region [--preview-delay:20ms] grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="preview-region [--preview-delay:20ms] grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {heroPreview.metrics.map((metric) => (
             <CompactMetric
               key={metric.label}
@@ -583,7 +594,7 @@ function OperationsDashboardPreview({ demo }: ProductPreviewProps) {
           ))}
         </div>
 
-        <div className="grid flex-1 gap-3 xl:grid-cols-[minmax(0,1.18fr)_minmax(13.5rem,0.82fr)]">
+        <div className="grid flex-1 gap-3 lg:grid-cols-[minmax(0,1.18fr)_minmax(13.5rem,0.82fr)]">
           <div className="preview-region [--preview-delay:70ms]">
             <CompactTrendChart
               title={heroPreview.chartTitle}
@@ -631,7 +642,7 @@ export function ProductPreview({ demo }: ProductPreviewProps) {
   return (
     <div
       data-testid="product-preview-surface"
-      className="card-surface relative overflow-hidden p-4 sm:p-5 lg:min-h-[32.5rem] lg:aspect-[1.42/1] lg:p-6 xl:min-h-[34rem] xl:aspect-[1.46/1]"
+      className="card-surface relative w-full min-w-0 max-w-full overflow-hidden p-4 sm:p-5 lg:aspect-[1.42/1] lg:p-6 xl:aspect-[1.46/1]"
     >
       {demo.id === "kitchen-inventory" ? <KitchenInventoryPreview demo={demo} /> : null}
       {demo.id === "bookings-website" ? <ClientSchedulingPreview demo={demo} /> : null}
