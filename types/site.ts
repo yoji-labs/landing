@@ -214,7 +214,7 @@ export interface DemosPreviewSectionContent {
   readonly eyebrow: string;
   readonly title: string;
   readonly intro: string;
-  readonly tierNote: string;
+  readonly tierNote?: string;
   readonly demoOrder: readonly DemoId[];
   readonly cta: LinkDefinition;
 }

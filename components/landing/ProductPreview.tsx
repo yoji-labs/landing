@@ -657,9 +657,6 @@ export function ProductPreview({ demo, embedded = false }: ProductPreviewProps) 
   return (
     <div
       data-testid="product-preview-surface"
-      className={`relative overflow-hidden lg:min-h-[32.5rem] lg:aspect-[1.42/1] xl:min-h-[34rem] xl:aspect-[1.46/1] ${
-        embedded ? "" : "card-surface p-4 sm:p-5 lg:p-6"
-      }`}
       className={`relative w-full min-w-0 max-w-full overflow-hidden lg:min-h-[32.5rem] lg:aspect-[1.42/1] xl:min-h-[34rem] xl:aspect-[1.46/1] ${
         embedded ? "" : "card-surface p-4 sm:p-5 lg:p-6"
       }`}
