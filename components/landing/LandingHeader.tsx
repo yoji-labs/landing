@@ -32,7 +32,7 @@ export function LandingHeader() {
           : "border-transparent bg-background/72"
       }`}
     >
-      <div className="hero-shell flex items-center justify-between py-4 lg:py-5">
+      <div className="hero-shell flex items-center justify-between py-4 xl:py-5">
         <Link
           href="/"
           className="inline-flex min-h-10 items-center rounded-[var(--radius-control)] px-1.5 py-1 transition hover:opacity-90 focus-visible:outline-offset-4"
@@ -40,7 +40,7 @@ export function LandingHeader() {
           <BrandLockup size="lg" priority />
         </Link>
 
-        <nav className="hidden items-center gap-10 lg:flex">
+        <nav className="hidden items-center gap-8 xl:flex">
           {header.map((item) => (
             <Link
               key={item.id}
@@ -52,7 +52,7 @@ export function LandingHeader() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Link
             href={primaryCta.href}
             className="inline-flex items-center justify-center rounded-[var(--radius-card)] bg-accent px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_32px_rgba(211,95,57,0.18)] transition hover:bg-accent/90"
@@ -61,7 +61,7 @@ export function LandingHeader() {
           </Link>
         </div>
 
-        <div className="lg:hidden">
+        <div className="xl:hidden">
           <MobileNav items={header} primaryCta={primaryCta} />
         </div>
       </div>

@@ -296,7 +296,7 @@ test("hero editorial typography and caption hierarchy follow the refined present
   expect(captionBox.y).toBeGreaterThan(previewBox.y + previewBox.height - 2);
 });
 
-test("what we build cards include structural numbering and aligned bottom-right arrows", async ({
+test("what we build cards remove sequencing and keep aligned bottom-right arrows", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1600, height: 1000 });
@@ -308,10 +308,10 @@ test("what we build cards include structural numbering and aligned bottom-right 
 
   await expect(cards).toHaveCount(4);
   await expect(arrows).toHaveCount(4);
-  await expect(servicesSection.getByText("01", { exact: true })).toBeVisible();
-  await expect(servicesSection.getByText("02", { exact: true })).toBeVisible();
-  await expect(servicesSection.getByText("03", { exact: true })).toBeVisible();
-  await expect(servicesSection.getByText("04", { exact: true })).toBeVisible();
+  await expect(servicesSection.getByText("01", { exact: true })).toHaveCount(0);
+  await expect(servicesSection.getByText("02", { exact: true })).toHaveCount(0);
+  await expect(servicesSection.getByText("03", { exact: true })).toHaveCount(0);
+  await expect(servicesSection.getByText("04", { exact: true })).toHaveCount(0);
 
   const positions = await cards.evaluateAll((nodes) =>
     nodes.map((node) => {

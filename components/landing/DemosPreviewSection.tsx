@@ -171,21 +171,16 @@ export function DemosPreviewSection() {
         <div className="motif-field motif-field--soft absolute right-[-3.5rem] top-10 hidden h-40 w-32 lg:block" />
         <div className="motif-field motif-field--warm motif-field--blur-sm absolute -left-14 bottom-6 hidden h-24 w-36 opacity-[0.42] lg:block" />
         <ViewportReveal
-          className="grid gap-8 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] lg:items-start"
+          className="grid gap-8 lg:gap-10 xl:grid-cols-[minmax(0,0.64fr)_minmax(0,1.36fr)] xl:items-start"
           variant="soft"
         >
           <div className="space-y-4">
             <SectionEyebrow>{demosPreview.eyebrow}</SectionEyebrow>
-            <h2 className="editorial-headline max-w-[13ch] text-[3rem] sm:text-[3.7rem]">{demosPreview.title}</h2>
-            <p className="max-w-[30rem] text-base leading-7 text-text-muted sm:text-[1.05rem]">
+            <h2 className="editorial-headline max-w-[10.5ch] text-[3rem] sm:text-[3.7rem]">{demosPreview.title}</h2>
+            <p className="max-w-[28rem] text-base leading-7 text-text-muted sm:text-[1.05rem]">
               {demosPreview.intro}
             </p>
-            <div className="flex items-center gap-3">
-              <SystemLineAccent className="hidden w-[4.8rem] text-accent/45 sm:block" />
-              <p className="text-sm font-medium text-text-muted">
-                {demosPreview.tierNote}
-              </p>
-            </div>
+            <SystemLineAccent className="hidden w-[4.8rem] text-accent/45 sm:block" />
 
             <div>
               <Link
@@ -204,9 +199,9 @@ export function DemosPreviewSection() {
               return (
                 <article
                   key={demo.id}
-                  className="card-surface flex h-full min-w-0 flex-col px-5 py-6 sm:px-6 lg:px-4 xl:px-5 2xl:px-6"
+                  className="card-surface group flex h-full flex-col px-5 py-6 transition duration-[var(--motion-standard)] ease-[var(--ease-enter)] hover:-translate-y-0.5 hover:border-accent/30 hover:shadow-[var(--shadow-soft)] sm:px-6"
                 >
-                  <div className="flex items-center justify-between gap-3 lg:flex-col lg:items-start lg:gap-2 xl:flex-row xl:items-center xl:gap-3">
+                  <div className="flex items-center justify-between gap-3">
                     <p className="max-w-full text-[11px] font-semibold uppercase tracking-[0.18em] text-text-muted">
                       {demo.category}
                     </p>
@@ -240,14 +235,22 @@ export function DemosPreviewSection() {
                     {demoLink ? (
                       <Link
                         href={demoLink}
-                        className="inline-flex min-h-10 items-center text-sm font-semibold text-accent transition hover:text-accent/80"
+                        className="inline-flex w-full items-center justify-between rounded-[var(--radius-card)] border border-border/80 bg-[rgba(255,252,246,0.92)] px-4 py-3 text-sm font-semibold text-text-strong transition hover:border-accent/35 hover:text-accent group-hover:border-accent/30"
                       >
-                        {demo.destination.linkLabel} →
+                        <span>Explore this direction</span>
+                        <span aria-hidden="true" className="text-base transition group-hover:translate-x-0.5">
+                          →
+                        </span>
                       </Link>
                     ) : (
-                      <p className="text-sm font-semibold text-text-muted">
-                        {demo.destination.availabilityLabel}
-                      </p>
+                      <div className="flex items-center justify-between rounded-[var(--radius-card)] border border-border/70 bg-surface-soft/65 px-4 py-3">
+                        <p className="text-sm font-semibold text-text-muted">
+                          Preview system direction
+                        </p>
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-text-muted">
+                          Coming next
+                        </span>
+                      </div>
                     )}
                   </div>
                 </article>

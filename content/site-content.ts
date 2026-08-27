@@ -43,7 +43,7 @@ export const siteContent = {
   },
   home: {
     hero: {
-      eyebrow: "Custom software. Real impact.",
+      eyebrow: "Custom software, real impact.",
       title: "Software built around your business.",
       body:
         "YojiLabs is a custom software and automation studio. We build tools and systems that match your workflow, automate the busywork, and help you scale with confidence.",
@@ -99,10 +99,9 @@ export const siteContent = {
     },
     demosPreview: {
       eyebrow: "Selected work",
-      title: "A few ways YojiLabs software shows up in real operations.",
+      title: "Software designed around real operations.",
       intro:
-        "A concise look at the kinds of systems, workflows, and operator tools we build.",
-      tierNote: "One working product, two scoped concepts.",
+        "A closer look at the systems, workflows, and operator tools we build for teams running real operations.",
       demoOrder: [
         "kitchen-inventory",
         "bookings-website",
@@ -117,7 +116,7 @@ export const siteContent = {
       eyebrow: "How we work",
       title: "Collaborative from start to scale.",
       description:
-        "We partner closely with your team to understand the real workflow, shape the right solution, and keep improving as the system grows with the business.",
+        "We shape the right workflow with you, then keep improving it as the system grows.",
       responseNote: "We typically reply within 1–2 business days.",
       process: [
         {

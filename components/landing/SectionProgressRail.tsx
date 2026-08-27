@@ -77,7 +77,7 @@ export function SectionProgressRail() {
   return (
     <nav
       aria-label="Homepage sections"
-      className="pointer-events-none fixed left-0 top-1/2 z-30 hidden -translate-y-1/2 2xl:block"
+      className="pointer-events-none fixed -left-1 top-1/2 z-30 hidden -translate-y-1/2 xl:block 2xl:left-0"
     >
       <div className="pointer-events-auto relative w-[7.5rem] pl-4">
         <span className="absolute left-[1.05rem] top-6 h-[calc(100%-3rem)] w-px bg-border/60" />

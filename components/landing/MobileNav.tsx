@@ -62,10 +62,10 @@ export function MobileNav({ items, primaryCta }: MobileNavProps) {
 
       {isOpen
         ? createPortal(
-            <div className="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-[#271D16]/18 p-4 backdrop-blur-sm lg:hidden">
+            <div className="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-[#271D16]/18 p-4 backdrop-blur-sm xl:hidden">
               <div
                 id="mobile-nav-panel"
-                className="mx-auto max-h-[calc(100dvh-2rem)] max-w-[40rem] overflow-y-auto rounded-[var(--radius-panel)] border border-border bg-surface px-5 py-5 shadow-[var(--shadow-soft)]"
+                className="mx-auto max-h-[calc(100dvh-2rem)] max-w-[40rem] overflow-y-auto rounded-[var(--radius-panel)] border border-border bg-surface px-5 py-5 shadow-[var(--shadow-soft)] md:mr-6 md:max-w-[24rem]"
               >
                 <div className="flex items-center justify-between border-b border-border/70 pb-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-text-muted">

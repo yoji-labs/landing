@@ -21,7 +21,7 @@ export function ServicesSection() {
         <ViewportReveal className="space-y-10" variant="rise">
           <div className="space-y-4 text-center">
             <SectionEyebrow>{services.eyebrow}</SectionEyebrow>
-            <h2 className="editorial-headline mx-auto max-w-[19ch] text-[3rem] sm:text-[3.7rem]">
+            <h2 className="editorial-headline mx-auto max-w-[16.5ch] text-[3rem] sm:text-[3.7rem]">
               {services.title}
             </h2>
             <p className="prose-measure mx-auto text-base leading-7 text-text-muted sm:text-[1.05rem]">
@@ -32,9 +32,9 @@ export function ServicesSection() {
 
           <div className="relative">
             <div className="motif-field motif-field--warm motif-field--blur-lg absolute inset-x-[6%] top-[12%] hidden h-[72%] opacity-[0.3] lg:block" />
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {services.cards.map((service, index) => (
-                <ServiceCard key={service.id} service={service} index={index} />
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {services.cards.map((service) => (
+                <ServiceCard key={service.id} service={service} />
               ))}
             </div>
           </div>

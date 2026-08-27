@@ -67,10 +67,10 @@ function ProcessStepIcon({ id }: { id: ProcessStepContent["id"] }) {
 
 export function ProcessSteps({ steps }: ProcessStepsProps) {
   return (
-    <div className="relative grid gap-6 md:grid-cols-2 xl:grid-cols-4 xl:gap-8">
+    <div className="relative grid gap-8 md:grid-cols-2 xl:grid-cols-4 xl:gap-8">
       <div className="absolute left-[8%] right-[8%] top-9 hidden border-t border-dashed border-accent/28 xl:block" />
       {steps.map((step, index) => (
-        <article key={step.id} className="relative space-y-4 xl:max-w-[14rem]">
+        <article key={step.id} className="relative space-y-4 xl:max-w-[13.5rem]">
           <div className="flex h-[4.75rem] w-[4.75rem] items-center justify-center rounded-full border border-border/75 bg-[linear-gradient(180deg,rgba(255,249,240,0.98),rgba(250,241,228,0.92))] shadow-[0_12px_26px_rgba(39,29,22,0.05)]">
             <ProcessStepIcon id={step.id} />
           </div>

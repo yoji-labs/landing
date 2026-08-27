@@ -2,7 +2,6 @@ import type { ServiceCardContent } from "@/types/site";
 
 interface ServiceCardProps {
   service: ServiceCardContent;
-  index: number;
 }
 
 function ServiceIcon({ id }: { id: ServiceCardContent["id"] }) {
@@ -40,25 +39,21 @@ function ServiceIcon({ id }: { id: ServiceCardContent["id"] }) {
   }
 }
 
-export function ServiceCard({ service, index }: ServiceCardProps) {
-  const cardNumber = String(index + 1).padStart(2, "0");
-
+export function ServiceCard({ service }: ServiceCardProps) {
   return (
     <article
       data-testid="service-card"
-      className="card-surface group flex h-full flex-col bg-[linear-gradient(180deg,rgba(255,252,247,1),rgba(250,243,231,0.97))] px-5 py-6 shadow-[0_18px_38px_rgba(39,29,22,0.055)] transition duration-[var(--motion-standard)] ease-[var(--ease-enter)] hover:-translate-y-0.5 hover:border-accent/35 hover:shadow-[var(--shadow-soft)] focus-visible:-translate-y-0.5 focus-visible:border-accent/35 focus-visible:shadow-[var(--shadow-soft)] sm:px-6"
+      className="card-surface group relative flex h-full flex-col overflow-hidden bg-[linear-gradient(180deg,rgba(255,253,249,1),rgba(250,243,231,0.97))] px-5 py-6 shadow-[0_18px_38px_rgba(39,29,22,0.055)] transition duration-[var(--motion-standard)] ease-[var(--ease-enter)] hover:-translate-y-0.5 hover:border-accent/35 hover:shadow-[var(--shadow-soft)] focus-visible:-translate-y-0.5 focus-visible:border-accent/35 focus-visible:shadow-[var(--shadow-soft)] sm:px-6"
       tabIndex={0}
     >
-      <div className="flex items-start justify-between gap-4">
+      <div className="soft-dot-grid absolute right-4 top-4 h-12 w-12 opacity-[0.04]" />
+      <div className="flex items-start gap-4">
         <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border/70 bg-[#fffaf2] transition duration-[var(--motion-standard)] ease-[var(--ease-enter)] group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
           <ServiceIcon id={service.id} />
         </div>
-        <span className="pt-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-text-muted">
-          {cardNumber}
-        </span>
       </div>
 
-      <div className="mt-6 flex-1 space-y-3">
+      <div className="mt-5 flex-1 space-y-3">
         <h3 className="text-[1.55rem] text-text-strong">{service.title}</h3>
         <p className="text-[0.98rem] leading-7 text-text-muted">
           {service.description}

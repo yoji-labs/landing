@@ -15,7 +15,7 @@ export function HeroDemoTabs({ demos, defaultDemoId }: HeroDemoTabsProps) {
     demos.find((demo) => demo.id === activeDemoId) ?? demos[0];
 
   return (
-    <div className="min-w-0 max-w-full space-y-3 lg:space-y-4">
+    <div className="min-w-0 max-w-full space-y-4 lg:space-y-5">
       <div className="min-w-0 max-w-full overflow-x-auto rounded-[calc(var(--radius-panel)+0.15rem)] border border-border/70 bg-[rgba(252,247,238,0.78)] p-3 shadow-[0_30px_70px_rgba(60,35,12,0.1)] backdrop-blur-sm">
         <div className="flex w-max min-w-full flex-nowrap gap-2.5">
           {demos.map((demo) => {
@@ -51,16 +51,24 @@ export function HeroDemoTabs({ demos, defaultDemoId }: HeroDemoTabsProps) {
         </div>
       </div>
 
-      <div key={activeDemo.id} className="preview-enter">
-        <ProductPreview demo={activeDemo} />
-      </div>
-
-      <p
-        data-testid="hero-demo-caption"
-        className="max-w-[38rem] px-1 text-[0.94rem] leading-6 text-text-muted/90"
+      <div
+        key={activeDemo.id}
+        className="preview-enter card-surface space-y-3.5 px-5 py-5 sm:px-6 sm:py-6"
       >
-        {activeDemo.heroCaption}
-      </p>
+        <span className="inline-flex items-center gap-2 rounded-full border border-accent/18 bg-[#FFF3E6] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-accent shadow-[0_8px_18px_rgba(211,95,57,0.08)]">
+          <span aria-hidden="true" className="h-2 w-2 rounded-full bg-accent" />
+          Interactive preview
+        </span>
+
+        <ProductPreview demo={activeDemo} embedded />
+
+        <p
+          data-testid="hero-demo-caption"
+          className="max-w-[37rem] text-[0.98rem] leading-6 text-text-muted"
+        >
+          {activeDemo.heroCaption}
+        </p>
+      </div>
     </div>
   );
 }

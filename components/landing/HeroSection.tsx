@@ -19,7 +19,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="page-section hero-shell relative grid scroll-mt-28 gap-12 pb-[4.5rem] pt-8 lg:gap-14 lg:pb-24 lg:pt-10 xl:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)] xl:items-start xl:gap-16"
+      className="page-section hero-shell relative grid scroll-mt-28 gap-10 pb-16 pt-8 md:gap-12 md:pb-20 lg:gap-14 lg:pt-10 xl:grid-cols-[minmax(0,0.65fr)_minmax(0,1.35fr)] xl:items-start xl:gap-20 xl:pb-24"
     >
       <div
         data-testid="hero-background-composition"
@@ -57,13 +57,15 @@ export function HeroSection() {
         <div className="soft-dot-grid absolute right-[34%] top-[13.5rem] hidden h-16 w-14 opacity-[0.07] xl:block" />
       </div>
 
-      <div className="relative z-10 space-y-8 pt-4 lg:max-w-[35rem] lg:pt-12 xl:sticky xl:top-24">
-        <div className="hero-reveal [--hero-delay:40ms] space-y-4">
+      <div className="relative z-10 space-y-8 pt-4 md:max-w-[40rem] lg:max-w-[43rem] lg:pt-8 xl:sticky xl:top-24 xl:max-w-[41rem] xl:pr-12 xl:pt-12 2xl:-ml-4 2xl:pr-14">
+        <div className="hero-reveal [--hero-delay:40ms] space-y-5 sm:space-y-6">
           <SectionEyebrow>{hero.eyebrow}</SectionEyebrow>
-          <h1 className="editorial-headline max-w-[8.9ch] text-[3.75rem] sm:text-[4.6rem] lg:text-[5.55rem]">
-            {hero.title}
+          <h1 className="editorial-headline max-w-[13.5ch] text-[3.28rem] tracking-[-0.018em] sm:max-w-[13ch] sm:text-[4.02rem] md:max-w-[12.8ch] md:text-[4.45rem] lg:max-w-[13ch] lg:text-[4.85rem] xl:max-w-[13.4ch] xl:text-[5.35rem]">
+            <span className="block whitespace-nowrap leading-[0.98]">Software</span>
+            <span className="block whitespace-nowrap leading-[0.98]">built around</span>
+            <span className="block whitespace-nowrap text-[0.977em] leading-[1.02]">your business.</span>
           </h1>
-          <p className="prose-measure max-w-[29rem] text-lg leading-8 text-text-muted sm:text-[1.16rem]">
+          <p className="prose-measure max-w-[30rem] pt-1 text-lg leading-8 text-text-muted sm:text-[1.14rem]">
             {hero.body}
           </p>
         </div>
@@ -84,7 +86,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="hero-reveal relative z-10 min-w-0 [--hero-delay:240ms]">
+      <div className="hero-reveal relative z-10 min-w-0 max-w-[72rem] xl:justify-self-end xl:pl-6 [--hero-delay:240ms]">
         <HeroDemoTabs demos={demos} defaultDemoId={hero.demoOrder[0]} />
       </div>
 

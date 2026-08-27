@@ -4,6 +4,12 @@ import type { DemoChartPoint, DemoExperience } from "@/types/site";
 
 interface ProductPreviewProps {
   demo: DemoExperience;
+  embedded?: boolean;
+}
+
+interface PreviewVariantProps {
+  demo: DemoExperience;
+  embedded?: boolean;
 }
 
 const schedulingPlannerColumns = [
@@ -130,6 +136,7 @@ function DemoFrameShell({
   activeNavItem,
   actions,
   children,
+  embedded = false,
 }: {
   appName: string;
   title: string;
@@ -139,9 +146,14 @@ function DemoFrameShell({
   activeNavItem: string;
   actions?: ReactNode;
   children: ReactNode;
+  embedded?: boolean;
 }) {
   return (
-    <div className="flex h-full min-w-0 flex-col overflow-hidden rounded-[1.75rem] border border-border/80 bg-[linear-gradient(180deg,rgba(255,252,246,0.98),rgba(250,242,230,0.96))] shadow-[0_30px_70px_rgba(48,24,10,0.12)]">
+    <div
+      className={`flex h-full min-w-0 flex-col overflow-hidden rounded-[1.75rem] border border-border/80 bg-[linear-gradient(180deg,rgba(255,252,246,0.98),rgba(250,242,230,0.96))] ${
+        embedded ? "shadow-none" : "shadow-[0_30px_70px_rgba(48,24,10,0.12)]"
+      }`}
+    >
       <div className="flex items-center justify-between gap-4 border-b border-border/65 bg-[rgba(255,252,246,0.92)] px-4 py-3 sm:px-5">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2">
@@ -350,7 +362,7 @@ function CompactTrendChart({
   );
 }
 
-function KitchenInventoryPreview({ demo }: ProductPreviewProps) {
+function KitchenInventoryPreview({ demo, embedded = false }: PreviewVariantProps) {
   const { heroPreview } = demo;
   const primaryItems = heroPreview.sideListItems.slice(0, 4);
   const draftOrder = heroPreview.lowerPanels[0]?.items ?? [];
@@ -363,6 +375,7 @@ function KitchenInventoryPreview({ demo }: ProductPreviewProps) {
       status={demo.destination.availabilityLabel}
       navAriaLabel="Kitchen Inventory product navigation"
       activeNavItem="Inventory"
+      embedded={embedded}
       actions={
         <button
           type="button"
@@ -456,7 +469,7 @@ function KitchenInventoryPreview({ demo }: ProductPreviewProps) {
   );
 }
 
-function ClientSchedulingPreview({ demo }: ProductPreviewProps) {
+function ClientSchedulingPreview({ demo, embedded = false }: PreviewVariantProps) {
   const { heroPreview } = demo;
 
   return (
@@ -467,6 +480,7 @@ function ClientSchedulingPreview({ demo }: ProductPreviewProps) {
       status={demo.destination.availabilityLabel}
       navAriaLabel="Client Scheduling product navigation"
       activeNavItem="Reservations"
+      embedded={embedded}
       actions={
         <button
           type="button"
@@ -557,7 +571,7 @@ function ClientSchedulingPreview({ demo }: ProductPreviewProps) {
   );
 }
 
-function OperationsDashboardPreview({ demo }: ProductPreviewProps) {
+function OperationsDashboardPreview({ demo, embedded = false }: PreviewVariantProps) {
   const { heroPreview } = demo;
   const automationQueue = heroPreview.lowerPanels[1]?.items ?? [];
 
@@ -569,6 +583,7 @@ function OperationsDashboardPreview({ demo }: ProductPreviewProps) {
       status={demo.destination.availabilityLabel}
       navAriaLabel="Operations Dashboard product navigation"
       activeNavItem="Reports"
+      embedded={embedded}
       actions={
         <div className="flex flex-wrap items-center gap-2">
           {["Week", "Channel", "Team"].map((filter) => (
@@ -638,15 +653,20 @@ function OperationsDashboardPreview({ demo }: ProductPreviewProps) {
   );
 }
 
-export function ProductPreview({ demo }: ProductPreviewProps) {
+export function ProductPreview({ demo, embedded = false }: ProductPreviewProps) {
   return (
     <div
       data-testid="product-preview-surface"
-      className="card-surface relative w-full min-w-0 max-w-full overflow-hidden p-4 sm:p-5 lg:aspect-[1.42/1] lg:p-6 xl:aspect-[1.46/1]"
+      className={`relative overflow-hidden lg:min-h-[32.5rem] lg:aspect-[1.42/1] xl:min-h-[34rem] xl:aspect-[1.46/1] ${
+        embedded ? "" : "card-surface p-4 sm:p-5 lg:p-6"
+      }`}
+      className={`relative w-full min-w-0 max-w-full overflow-hidden lg:min-h-[32.5rem] lg:aspect-[1.42/1] xl:min-h-[34rem] xl:aspect-[1.46/1] ${
+        embedded ? "" : "card-surface p-4 sm:p-5 lg:p-6"
+      }`}
     >
-      {demo.id === "kitchen-inventory" ? <KitchenInventoryPreview demo={demo} /> : null}
-      {demo.id === "bookings-website" ? <ClientSchedulingPreview demo={demo} /> : null}
-      {demo.id === "operations-dashboard" ? <OperationsDashboardPreview demo={demo} /> : null}
+      {demo.id === "kitchen-inventory" ? <KitchenInventoryPreview demo={demo} embedded={embedded} /> : null}
+      {demo.id === "bookings-website" ? <ClientSchedulingPreview demo={demo} embedded={embedded} /> : null}
+      {demo.id === "operations-dashboard" ? <OperationsDashboardPreview demo={demo} embedded={embedded} /> : null}
     </div>
   );
 }
